@@ -197,7 +197,7 @@ export function CareerForm({ locale }: { locale: Locale }) {
           aria-haspopup="listbox"
           onClick={() => setPosOpen((v) => !v)}
         >
-          <span>{position || c.position}</span>
+          <span>{position || '\u00A0'}</span>
           <ChevronDown size={16} />
         </button>
         {posOpen && (

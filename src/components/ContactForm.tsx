@@ -1,56 +1,94 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CheckCircle2, LoaderCircle, Paperclip } from 'lucide-react'
+import { CheckCircle2, LoaderCircle, X } from 'lucide-react'
 import type { Locale } from '@/lib/i18n'
 import { ui } from '@/data/site'
 
-const schema=z.object({name:z.string().min(2),company:z.string().min(2),email:z.email(),phone:z.string().min(7),country:z.string().min(2),projectType:z.string().min(1),industry:z.string().min(1),timeline:z.string().min(1),budget:z.string().min(1),description:z.string().min(20)})
+const schema=z.object({
+ name:z.string().min(2),
+ company:z.string().optional(),
+ email:z.email(),
+ phone:z.string().min(7),
+ message:z.string().min(5),
+})
 type FormData=z.infer<typeof schema>
 
 const formCopy={
  uz:{
-  name:'Ism va familiya',company:'Kompaniya',phone:'Telefon',country:'Mamlakat',projectType:'Loyiha turi',industry:'Soha',timeline:'Muddat',budget:'Byudjet diapazoni',description:'Loyiha haqida',attach:'Fayl biriktirish',descError:'Kamida 20 ta belgi kiriting.',
-  projectTypes:['GIS tizimi','ArcGIS portal','Geoportal','Yo‘ldosh analitika','Veb-platforma'],
-  industries:['Davlat','Qishloq xo‘jaligi','Infratuzilma','Ekologiya','Boshqa'],
-  timelines:['1–3 oy','3–6 oy','6–12 oy','12+ oy'],
-  budgets:['Tahlil talab qilinadi','$10k–$30k','$30k–$100k','$100k+']
+  name:'Ism va familiya',company:'Kompaniya',phone:'Telefon',message:'Xabar',
+  messageError:'Xabarni yozing.',send:'Xabar yuborish',
+  sendError:'Xabar yuborilmadi. Keyinroq qayta urinib ko‘ring.',
+  sentTitle:'Xabar yuborildi',
+  sentText:'Tez orada siz bilan bog‘lanamiz.',
  },
  ru:{
-  name:'Имя и фамилия',company:'Компания',phone:'Телефон',country:'Страна',projectType:'Тип проекта',industry:'Отрасль',timeline:'Срок',budget:'Диапазон бюджета',description:'О проекте',attach:'Прикрепить файл',descError:'Введите минимум 20 символов.',
-  projectTypes:['GIS-система','Портал ArcGIS','Геопортал','Спутниковая аналитика','Веб-платформа'],
-  industries:['Государство','Сельское хозяйство','Инфраструктура','Экология','Другое'],
-  timelines:['1–3 месяца','3–6 месяцев','6–12 месяцев','12+ месяцев'],
-  budgets:['Требуется анализ','$10k–$30k','$30k–$100k','$100k+']
+  name:'Имя и фамилия',company:'Компания',phone:'Телефон',message:'Сообщение',
+  messageError:'Напишите сообщение.',send:'Отправить сообщение',
+  sendError:'Не удалось отправить сообщение. Попробуйте позже.',
+  sentTitle:'Сообщение отправлено',
+  sentText:'Мы скоро свяжемся с вами.',
  },
  en:{
-  name:'Full name',company:'Company',phone:'Phone',country:'Country',projectType:'Project type',industry:'Industry',timeline:'Timeline',budget:'Budget range',description:'Project description',attach:'Attach brief',descError:'Enter at least 20 characters.',
-  projectTypes:['GIS System','ArcGIS Portal','Geoportal','Satellite Analytics','Web Platform'],
-  industries:['Government','Agriculture','Infrastructure','Environment','Other'],
-  timelines:['1–3 months','3–6 months','6–12 months','12+ months'],
-  budgets:['Discovery required','$10k–$30k','$30k–$100k','$100k+']
- }
+  name:'Full name',company:'Company',phone:'Phone',message:'Message',
+  messageError:'Please enter a message.',send:'Send message',
+  sendError:'Could not send your message. Please try again later.',
+  sentTitle:'Message sent',
+  sentText:'We will get back to you shortly.',
+ },
+}
+
+function Label({children,required}:{children:string,required?:boolean}){
+ return <span>{children}{required&&<i className="req">*</i>}</span>
 }
 
 export function ContactForm({locale,compact=false}:{locale:Locale,compact?:boolean}){
- const t=ui[locale];const f=formCopy[locale];const [sent,setSent]=useState(false)
- const {register,handleSubmit,formState:{errors,isSubmitting}}=useForm<FormData>({resolver:zodResolver(schema)})
- const submit=async()=>{await new Promise(r=>setTimeout(r,800));setSent(true)}
- if(sent)return <div className="form-success"><CheckCircle2/><h3>{t.formSuccess}</h3><button onClick={()=>setSent(false)}>OK</button></div>
+ const t=ui[locale];const f=formCopy[locale]
+ const [sent,setSent]=useState(false)
+ const [submitError,setSubmitError]=useState('')
+ const {register,handleSubmit,formState:{errors,isSubmitting},reset}=useForm<FormData>({resolver:zodResolver(schema),defaultValues:{company:''}})
+
+ useEffect(()=>{
+  if(!sent)return
+  const id=window.setTimeout(()=>setSent(false),6000)
+  return()=>window.clearTimeout(id)
+ },[sent])
+
+ const submit=async(values:FormData)=>{
+  setSubmitError('')
+  try{
+   const res=await fetch('/api/contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({...values,company:values.company?.trim()||'',locale}),
+   })
+   if(!res.ok) throw new Error('send failed')
+   reset()
+   setSent(true)
+  }catch{
+   setSubmitError(f.sendError)
+  }
+ }
+
  return <form className={'contact-form '+(compact?'compact':'')} onSubmit={handleSubmit(submit)} noValidate>
-  <label><span>{f.name}</span><input {...register('name')}/>{errors.name&&<small>{t.required}</small>}</label>
-  <label><span>{f.company}</span><input {...register('company')}/>{errors.company&&<small>{t.required}</small>}</label>
-  <label><span>Email</span><input type="email" {...register('email')}/>{errors.email&&<small>{t.required}</small>}</label>
-  <label><span>{f.phone}</span><input {...register('phone')}/>{errors.phone&&<small>{t.required}</small>}</label>
-  <label><span>{f.country}</span><input {...register('country')}/></label>
-  <label><span>{f.projectType}</span><select {...register('projectType')}><option value="">—</option>{f.projectTypes.map(x=><option key={x}>{x}</option>)}</select></label>
-  <label><span>{f.industry}</span><select {...register('industry')}><option value="">—</option>{f.industries.map(x=><option key={x}>{x}</option>)}</select></label>
-  <label><span>{f.timeline}</span><select {...register('timeline')}><option value="">—</option>{f.timelines.map(x=><option key={x}>{x}</option>)}</select></label>
-  <label><span>{f.budget}</span><select {...register('budget')}><option value="">—</option>{f.budgets.map(x=><option key={x}>{x}</option>)}</select></label>
-  <label className="full"><span>{f.description}</span><textarea rows={5} {...register('description')}/>{errors.description&&<small>{f.descError}</small>}</label>
-  <label className="file full"><Paperclip/><span>{f.attach}</span><input type="file"/></label>
-  <button className="form-submit" disabled={isSubmitting}>{isSubmitting?<LoaderCircle className="spin"/>:t.start}</button>
+  {sent&&(
+   <div className="form-toast full" role="status">
+    <CheckCircle2/>
+    <div>
+     <strong>{f.sentTitle}</strong>
+     <p>{f.sentText}</p>
+    </div>
+    <button type="button" aria-label="OK" onClick={()=>setSent(false)}><X/></button>
+   </div>
+  )}
+  <label><Label required>{f.name}</Label><input {...register('name')}/>{errors.name&&<small>{t.required}</small>}</label>
+  <label><Label>{f.company}</Label><input {...register('company')}/></label>
+  <label><Label required>Email</Label><input type="email" {...register('email')}/>{errors.email&&<small>{t.required}</small>}</label>
+  <label><Label required>{f.phone}</Label><input {...register('phone')}/>{errors.phone&&<small>{t.required}</small>}</label>
+  <label className="full"><Label required>{f.message}</Label><textarea rows={5} {...register('message')}/>{errors.message&&<small>{f.messageError}</small>}</label>
+  {submitError&&<p className="form-error full">{submitError}</p>}
+  <button className="form-submit" disabled={isSubmitting}>{isSubmitting?<LoaderCircle className="spin"/>:f.send}</button>
  </form>
 }

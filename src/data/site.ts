@@ -6,17 +6,22 @@ export const tx = (value:Localized, locale:Locale) => value[locale]
 
 export const company = {
   name:'GEOLDATA TECH',
-  email:'hello@geoldatatech.uz',
-  phone:'+998 71 200 00 00',
-  address:L('Toshkent, O‘zbekiston','Ташкент, Узбекистан','Tashkent, Uzbekistan'),
+  email:'sk@geoaidata.uz',
+  phone:'+998901861411',
+  coords:{lat:41.294609,lng:69.250333},
+  address:L(
+    'Bobur ko‘chasi 16, Toshkent — ToshkentboshplanLITI, 3-qavat',
+    'ул. Бабура 16, Ташкент — ТошкентбошпланЛИТИ, 3-й этаж',
+    '16 Bobur Street, Tashkent — ToshkentboshplanLITI, 3rd floor'
+  ),
   hours:L('Du–Ju, 09:00–18:00','Пн–Пт, 09:00–18:00','Mon–Fri, 09:00–18:00'),
   description:L('Hududlar, ma’lumotlar va odamlarni bog‘laydigan geoaxborot tizimlari.','Геоинформационные системы, соединяющие территории, данные и людей.','Geospatial systems connecting territories, data and people.')
 }
 
 export const ui = {
-  uz:{nav:['Bosh sahifa','Biz haqimizda','Xizmatlar','Loyihalar','Karyera','Aloqa'],start:'Biz bilan bog‘lanish',explore:'Xizmatlarni ko‘rish',view:'Batafsil',all:'Barchasi',back:'Ortga',menu:'Menyu',close:'Yopish',theme:'Mavzu',language:'Til',read:'O‘qish',minutes:'daq',newsletter:'Geoaxborot yangiliklari',subscribe:'Obuna bo‘lish',email:'Email manzilingiz',rights:'Barcha huquqlar himoyalangan.',next:'Keyingi',formSuccess:'So‘rovingiz qabul qilindi. Tez orada bog‘lanamiz.',required:'Maydonni to‘ldiring.',privacy:'Maxfiylik siyosati',terms:'Foydalanish shartlari',gridView:'Katak ko‘rinish',mapView:'Xarita ko‘rinishi',locations:'joylashuv',sendApplication:'Arizani yuborish',completeFields:'Majburiy maydonlarni to‘ldiring.'},
-  ru:{nav:['Главная','О компании','Услуги','Проекты','Карьера','Контакты'],start:'Связаться с нами',explore:'Смотреть услуги',view:'Подробнее',all:'Все',back:'Назад',menu:'Меню',close:'Закрыть',theme:'Тема',language:'Язык',read:'Читать',minutes:'мин',newsletter:'Новости геотехнологий',subscribe:'Подписаться',email:'Ваш email',rights:'Все права защищены.',next:'Далее',formSuccess:'Запрос получен. Мы скоро свяжемся с вами.',required:'Заполните поле.',privacy:'Политика конфиденциальности',terms:'Условия использования',gridView:'Вид сеткой',mapView:'Вид карты',locations:'локаций',sendApplication:'Отправить заявку',completeFields:'Заполните обязательные поля.'},
-  en:{nav:['Home','About','Services','Projects','Careers','Contact'],start:'Contact us',explore:'Explore services',view:'View details',all:'All',back:'Back',menu:'Menu',close:'Close',theme:'Theme',language:'Language',read:'Read',minutes:'min',newsletter:'Geospatial news',subscribe:'Subscribe',email:'Your email',rights:'All rights reserved.',next:'Next',formSuccess:'Your request has been received. We will be in touch shortly.',required:'This field is required.',privacy:'Privacy Policy',terms:'Terms of Use',gridView:'Grid view',mapView:'Map view',locations:'locations',sendApplication:'Send application',completeFields:'Please complete the required fields.'}
+  uz:{nav:['Bosh sahifa','Biz haqimizda','Xizmatlar','Loyihalar','Karyera','Aloqa'],start:'Biz bilan bog‘lanish',explore:'Xizmatlarni ko‘rish',view:'Batafsil',all:'Barchasi',back:'Ortga',backToTop:'Tepaga',menu:'Menyu',close:'Yopish',theme:'Mavzu',language:'Til',read:'O‘qish',minutes:'daq',newsletter:'Geoaxborot yangiliklari',subscribe:'Obuna bo‘lish',email:'Email manzilingiz',rights:'Barcha huquqlar himoyalangan.',next:'Keyingi',formSuccess:'So‘rovingiz qabul qilindi. Tez orada bog‘lanamiz.',required:'Maydonni to‘ldiring.',privacy:'Maxfiylik siyosati',terms:'Foydalanish shartlari',gridView:'Katak ko‘rinish',mapView:'Xarita ko‘rinishi',locations:'joylashuv',sendApplication:'Arizani yuborish',completeFields:'Majburiy maydonlarni to‘ldiring.'},
+  ru:{nav:['Главная','О компании','Услуги','Проекты','Карьера','Контакты'],start:'Связаться с нами',explore:'Смотреть услуги',view:'Подробнее',all:'Все',back:'Назад',backToTop:'Наверх',menu:'Меню',close:'Закрыть',theme:'Тема',language:'Язык',read:'Читать',minutes:'мин',newsletter:'Новости геотехнологий',subscribe:'Подписаться',email:'Ваш email',rights:'Все права защищены.',next:'Далее',formSuccess:'Запрос получен. Мы скоро свяжемся с вами.',required:'Заполните поле.',privacy:'Политика конфиденциальности',terms:'Условия использования',gridView:'Вид сеткой',mapView:'Вид карты',locations:'локаций',sendApplication:'Отправить заявку',completeFields:'Заполните обязательные поля.'},
+  en:{nav:['Home','About','Services','Projects','Careers','Contact'],start:'Contact us',explore:'Explore services',view:'View details',all:'All',back:'Back',backToTop:'Back to top',menu:'Menu',close:'Close',theme:'Theme',language:'Language',read:'Read',minutes:'min',newsletter:'Geospatial news',subscribe:'Subscribe',email:'Your email',rights:'All rights reserved.',next:'Next',formSuccess:'Your request has been received. We will be in touch shortly.',required:'This field is required.',privacy:'Privacy Policy',terms:'Terms of Use',gridView:'Grid view',mapView:'Map view',locations:'locations',sendApplication:'Send application',completeFields:'Please complete the required fields.'}
 }
 export const navSlugs=['','about','services','projects','careers','contact']
 
@@ -277,7 +282,8 @@ export const testimonials = [
 export const jobs = [
  {title:L('GIS dasturchi','GIS-разработчик','GIS Developer'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent / Gibrid','Ташкент / Гибрид','Tashkent / Hybrid')},
  {title:L('Frontend dasturchi','Frontend-разработчик','Frontend Developer'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent / Gibrid','Ташкент / Гибрид','Tashkent / Hybrid')},
- {title:L('Masofadan zondlash mutaxassisi','Специалист по ДЗЗ','Remote Sensing Specialist'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent','Ташкент','Tashkent')},
+ {title:L('Backend dasturchi','Backend-разработчик','Backend Developer'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent / Gibrid','Ташкент / Гибрид','Tashkent / Hybrid')},
+ {title:L('Mobile dasturchi','Mobile-разработчик','Mobile Developer'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent / Gibrid','Ташкент / Гибрид','Tashkent / Hybrid')},
  {title:L('GIS tahlilchi','GIS-аналитик','GIS Analyst'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent','Ташкент','Tashkent')},
  {title:L('UI/UX dizayner','UI/UX-дизайнер','UI/UX Designer'),type:L('Shartnoma','Контракт','Contract'),location:L('Masofaviy','Удаленно','Remote')}
 ]

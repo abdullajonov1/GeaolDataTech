@@ -3,6 +3,8 @@ import { ThemeProvider } from 'next-themes'
 import { useEffect, type ReactNode } from 'react'
 import Lenis from 'lenis'
 import { motion, useScroll, useSpring } from 'framer-motion'
+import { ScrollAtmosphere } from './ScrollAtmosphere'
+import { ScrollCompanion } from './ScrollCompanion'
 
 function SmoothScroll({children}:{children:ReactNode}){
   useEffect(()=>{
@@ -23,6 +25,6 @@ function Progress(){
 
 export function Providers({children}:{children:ReactNode}){
   return <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
-    <SmoothScroll><Progress/>{children}</SmoothScroll>
+    <SmoothScroll><Progress/><ScrollAtmosphere/><ScrollCompanion/>{children}</SmoothScroll>
   </ThemeProvider>
 }

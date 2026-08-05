@@ -8,11 +8,11 @@ export const company = {
   name:'GEOLDATA TECH',
   email:'sk@geoaidata.uz',
   phone:'+998901861411',
-  coords:{lat:41.294609,lng:69.250333},
+  coords:{lat:41.227380,lng:69.167941},
   address:L(
-    'Bobur ko‘chasi 14, Toshkent — ToshkentboshplanLITI, 3-qavat',
-    'ул. Бабура 14, Ташкент — ТошкентбошпланЛИТИ, 3-й этаж',
-    '14 Bobur Street, Tashkent — ToshkentboshplanLITI, 3rd floor'
+    'Toshkent viloyati, Zangiota tumani, Erkin MFY, 63-uy',
+    'Ташкентская обл., р-н Зангиота, Эркин МФЙ, дом 63',
+    'Tashkent Region, Zangiota District, Erkin MFY, house 63'
   ),
   hours:L('Du–Ju, 09:00–18:00','Пн–Пт, 09:00–18:00','Mon–Fri, 09:00–18:00'),
   description:L('Hududlar, ma’lumotlar va odamlarni bog‘laydigan geoaxborot tizimlari.','Геоинформационные системы, соединяющие территории, данные и людей.','Geospatial systems connecting territories, data and people.')

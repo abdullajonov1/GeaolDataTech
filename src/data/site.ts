@@ -10,9 +10,9 @@ export const company = {
   phone:'+998901861411',
   coords:{lat:41.294609,lng:69.250333},
   address:L(
-    'Bobur ko‘chasi 16, Toshkent — ToshkentboshplanLITI, 3-qavat',
-    'ул. Бабура 16, Ташкент — ТошкентбошпланЛИТИ, 3-й этаж',
-    '16 Bobur Street, Tashkent — ToshkentboshplanLITI, 3rd floor'
+    'Bobur ko‘chasi 14, Toshkent — ToshkentboshplanLITI, 3-qavat',
+    'ул. Бабура 14, Ташкент — ТошкентбошпланЛИТИ, 3-й этаж',
+    '14 Bobur Street, Tashkent — ToshkentboshplanLITI, 3rd floor'
   ),
   hours:L('Du–Ju, 09:00–18:00','Пн–Пт, 09:00–18:00','Mon–Fri, 09:00–18:00'),
   description:L('Hududlar, ma’lumotlar va odamlarni bog‘laydigan geoaxborot tizimlari.','Геоинформационные системы, соединяющие территории, данные и людей.','Geospatial systems connecting territories, data and people.')
@@ -276,8 +276,8 @@ export const posts = [
 ]
 
 export const testimonials = [
- {quote:L('Platforma hisobotlarni kunlardan daqiqalarga qisqartirdi va hududiy jamoalarni yagona ma’lumot bilan ishlashga o‘tkazdi.','Платформа сократила отчетность с дней до минут и объединила региональные команды.','The platform reduced reporting from days to minutes and aligned regional teams around one source of truth.'),name:'Aziz R.',role:L('Raqamli rivojlanish rahbari','Руководитель цифрового развития','Head of Digital Development'),org:L('Davlat tashkiloti','Государственная организация','Government organization')},
- {quote:L('Texnik chuqurlik va biznes jarayonini tushunish bir jamoada jamlangan.','Техническая глубина и понимание бизнеса объединены в одной команде.','Deep technical expertise and business understanding live in the same team.'),name:'Elena K.',role:L('Dastur direktori','Директор программы','Program Director'),org:L('Infratuzilma operatori','Инфраструктурный оператор','Infrastructure operator')}
+ {quote:L('Platforma hisobotlarni kunlardan daqiqalarga qisqartirdi va hududiy jamoalarni yagona ma’lumot bilan ishlashga o‘tkazdi.','Платформа сократила отчетность с дней до минут и объединила региональные команды.','The platform reduced reporting from days to minutes and aligned regional teams around one source of truth.'),name:L('Davlat hamkori','Государственный партнёр','Public-sector partner'),role:L('Raqamli rivojlanish rahbari','Руководитель цифрового развития','Head of Digital Development'),org:L('Davlat tashkiloti','Государственная организация','Government organization')},
+ {quote:L('Texnik chuqurlik va biznes jarayonini tushunish bir jamoada jamlangan.','Техническая глубина и понимание бизнеса объединены в одной команде.','Deep technical expertise and business understanding live in the same team.'),name:L('Infratuzilma hamkori','Инфраструктурный партнёр','Infrastructure partner'),role:L('Dastur direktori','Директор программы','Program Director'),org:L('Infratuzilma operatori','Инфраструктурный оператор','Infrastructure operator')}
 ]
 export const jobs = [
  {title:L('GIS dasturchi','GIS-разработчик','GIS Developer'),type:L('To‘liq stavka','Полная занятость','Full-time'),location:L('Toshkent / Gibrid','Ташкент / Гибрид','Tashkent / Hybrid')},

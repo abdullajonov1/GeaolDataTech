@@ -53,7 +53,7 @@ export default async function Page({params}:{params:Promise<{locale:string}>}){
   <section className="contact-page">
    <div className="contact-info">
     <span className="section-label">/ {f.office}</span>
-    <h2>{locale==='uz'?'Bobur ko‘chasi 16':locale==='ru'?'ул. Бабура 16':'Bobur St. 16'}<br/>{locale==='ru'?'Ташкент':'Toshkent'}</h2>
+    <h2>{locale==='uz'?'Bobur ko‘chasi 14':locale==='ru'?'ул. Бабура 14':'Bobur St. 14'}<br/>{locale==='ru'?'Ташкент':'Toshkent'}</h2>
     <a href={`mailto:${company.email}`}><Mail/>{company.email}</a>
     <a href={`tel:${company.phone}`}><Phone/>{company.phone}</a>
     <span><MapPinned/>{company.address[locale]}</span>
@@ -61,7 +61,7 @@ export default async function Page({params}:{params:Promise<{locale:string}>}){
     <div className="office-map">
      <RealMap
       key={`office-${company.coords.lat}-${company.coords.lng}`}
-      markers={[{id:'office',lng:company.coords.lng,lat:company.coords.lat,label:'GEOLDATA TECH — Bobur 16'}]}
+      markers={[{id:'office',lng:company.coords.lng,lat:company.coords.lat,label:'GEOLDATA TECH — Bobur 14'}]}
       activeId="office"
       center={[company.coords.lng,company.coords.lat]}
       zoom={17}

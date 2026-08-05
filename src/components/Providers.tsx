@@ -6,13 +6,24 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import { ScrollAtmosphere } from './ScrollAtmosphere'
 import { ScrollCompanion } from './ScrollCompanion'
 
+declare global {
+  interface Window {
+    __gdtLenis?: Lenis
+  }
+}
+
 function SmoothScroll({children}:{children:ReactNode}){
   useEffect(()=>{
     const lenis=new Lenis({duration:1.05,smoothWheel:true})
+    window.__gdtLenis=lenis
     let id=0
     const raf=(time:number)=>{lenis.raf(time);id=requestAnimationFrame(raf)}
     id=requestAnimationFrame(raf)
-    return()=>{cancelAnimationFrame(id);lenis.destroy()}
+    return()=>{
+      cancelAnimationFrame(id)
+      if(window.__gdtLenis===lenis)delete window.__gdtLenis
+      lenis.destroy()
+    }
   },[])
   return children
 }

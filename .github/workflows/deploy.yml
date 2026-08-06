@@ -6,22 +6,24 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      - name: Configure SSH
+      - name: Sync files to deployment directory
         run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "${{ vars.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+          rsync -a --delete --exclude='.git' --exclude='node_modules' ./ /var/www/geoldatatech/
 
-      - name: Push to server (triggers post-receive deploy hook)
-        env:
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes
+      - name: Install, build, and restart
         run: |
-          git remote add production "${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}:/home/ad/repos/geoldatatech.git"
-          git push production HEAD:main
+          cd /var/www/geoldatatech
+          npm ci
+          npm run build
+          if pm2 describe geoldatatech > /dev/null 2>&1; then
+            pm2 restart geoldatatech
+          else
+            pm2 start npm --name geoldatatech -- start
+          fi
+          pm2 save

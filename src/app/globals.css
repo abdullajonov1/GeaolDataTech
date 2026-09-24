@@ -940,9 +940,9 @@ html:not([data-theme=dark]) .scroll-atmosphere .sa-grid,
  transform:translateZ(0);
 }
 .brand-logo{
- height:40px !important;
+ height:42px !important;
  width:auto !important;
- max-width:min(210px,46vw);
+ max-width:min(460px,42vw);
  object-fit:contain !important;
  object-position:left center;
  display:block;
@@ -1093,7 +1093,7 @@ html:not([data-theme=dark]) .hero-grid,
 }
 @media(max-width:600px){
  .header{left:8px;right:8px;top:10px;border-radius:14px}
- .brand-logo{height:36px !important;max-width:min(168px,48vw)}
+ .brand-logo{height:34px !important;max-width:min(280px,62vw)}
  .brand-mark,.logo-mark{width:32px !important;height:29px !important}
  .mobile-panel{padding:84px 18px 24px !important}
  .mobile-links span{font-size:clamp(20px,6.5vw,25px)}
@@ -1104,7 +1104,7 @@ html:not([data-theme=dark]) .hero-grid,
 @media(max-width:400px){
  .header{left:6px;right:6px;top:8px;height:54px !important;padding:0 8px !important;border-radius:12px;gap:6px}
  .header.scrolled{height:50px !important}
- .brand-logo{height:32px !important;max-width:min(148px,46vw)}
+ .brand-logo{height:30px !important;max-width:min(220px,58vw)}
  .header-tools{gap:2px}
  .locale-switch>button,.round-button,.mobile-toggle{min-width:40px;min-height:40px}
  .mobile-panel{padding:76px 14px 20px !important}

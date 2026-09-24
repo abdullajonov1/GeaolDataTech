@@ -20,14 +20,14 @@ export function Logo({ locale = 'uz' }: { locale?: string }) {
   const src = dark ? '/images/logo-horizontal-dark.png' : '/images/logo-horizontal.png'
 
   return (
-    <Link href={`/${locale}`} className="brand" aria-label="GEOLDATA TECH">
+    <Link href={`/${locale}`} className="brand" aria-label="GeoAI-Data Tech">
       {/* Native img avoids Next/Image recompression soft edges at small header size */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
-        alt="GEOLDATA TECH"
-        width={1574}
-        height={400}
+        alt="GeoAI-Data Tech"
+        width={986}
+        height={93}
         className="brand-logo"
         decoding="async"
         fetchPriority="high"

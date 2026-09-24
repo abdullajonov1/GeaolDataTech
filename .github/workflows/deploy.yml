@@ -14,7 +14,25 @@ jobs:
 
       - name: Sync files to deployment directory
         run: |
-          rsync -a --delete --exclude='.git' --exclude='node_modules' ./ /var/www/geoldatatech/
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='.env' \
+            --exclude='.env.local' \
+            --exclude='.env.production' \
+            --exclude='.env.production.local' \
+            ./ /var/www/geoldatatech/
+
+      - name: Write Telegram credentials
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          cd /var/www/geoldatatech
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            umask 077
+            printf 'TELEGRAM_BOT_TOKEN=%s\nTELEGRAM_CHAT_ID=%s\n' "$TELEGRAM_BOT_TOKEN" "$TELEGRAM_CHAT_ID" > .env.production.local
+          fi
 
       - name: Install, build, and restart
         run: |

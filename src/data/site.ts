@@ -5,7 +5,7 @@ export const L = (uz:string,ru:string,en:string):Localized => ({uz,ru,en})
 export const tx = (value:Localized, locale:Locale) => value[locale]
 
 export const company = {
-  name:'GEOLDATA TECH',
+  name:'GeoAIData Tech',
   email:'sk@geoaidata.uz',
   phone:'+998901861411',
   coords:{lat:41.227380,lng:69.167941},

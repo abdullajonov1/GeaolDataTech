@@ -781,10 +781,7 @@ html:not([data-theme=dark]) .scroll-atmosphere .sa-grid,
  margin-right:auto;
  height:64px !important;
  padding:0 14px 0 12px !important;
- display:grid;
- grid-template-columns:auto 1fr auto;
- align-items:center;
- gap:10px;
+ display:block !important;
  border-radius:18px;
  overflow:visible;
  border:1px solid color-mix(in srgb,#ffffff 18%,transparent);
@@ -808,7 +805,15 @@ html:not([data-theme=dark]) .scroll-atmosphere .sa-grid,
  -webkit-backdrop-filter:blur(18px) saturate(1.15);
  pointer-events:none;
 }
-.header>*{position:relative;z-index:1}
+.header-bar{
+ position:relative;
+ z-index:1;
+ height:100%;
+ display:grid;
+ grid-template-columns:auto 1fr auto;
+ align-items:center;
+ gap:10px;
+}
 .header .mega-menu{position:absolute;z-index:5}
 .header.scrolled{
  top:10px;
@@ -830,29 +835,42 @@ html:not([data-theme=dark]) .scroll-atmosphere .sa-grid,
  z-index:5;
  left:0;
  right:0;
- top:calc(100% + 10px);
- display:grid;
- grid-template-columns:minmax(200px,.85fr) minmax(280px,1.35fr);
- align-items:stretch;
- border-radius:18px;
- border:1px solid transparent;
- background:#0a1522;
+ width:100%;
+ top:100%;
+ padding-top:10px;
+ display:block !important;
+ grid-template-columns:none !important;
+ background:transparent !important;
+ border:0;
  box-shadow:none;
  max-height:0;
  overflow:hidden;
  opacity:0;
  pointer-events:none;
- transition:max-height .4s ease,opacity .25s ease,border-color .25s ease,box-shadow .25s ease;
- backdrop-filter:none;
- -webkit-backdrop-filter:none;
+ transition:max-height .4s ease,opacity .25s ease;
+ backdrop-filter:none !important;
+ -webkit-backdrop-filter:none !important;
 }
 .header .mega-menu.show{
- max-height:min(520px,70vh);
+ max-height:min(540px,70vh);
  opacity:1;
  pointer-events:auto;
- border-color:#ffffff22;
+ overflow:visible;
+}
+.header .mega-panel{
+ display:grid !important;
+ grid-template-columns:220px minmax(0,1fr) !important;
+ align-items:stretch;
+ width:100% !important;
+ max-width:none !important;
+ min-width:0;
+ box-sizing:border-box;
+ border-radius:18px;
+ border:1px solid #ffffff22;
+ background:#0a1522;
  box-shadow:0 24px 70px #00000066;
- overflow:auto;
+ overflow:hidden;
+ max-height:min(520px,70vh);
 }
 .header .mega-intro{
  padding:28px 26px;
@@ -882,9 +900,10 @@ html:not([data-theme=dark]) .scroll-atmosphere .sa-grid,
 .header .mega-links{
  padding:14px 16px;
  display:grid;
- grid-template-columns:1fr 1fr;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr);
  gap:0;
  align-content:start;
+ min-width:0;
 }
 .header .mega-links a{
  min-height:58px;
@@ -909,11 +928,9 @@ html:not([data-theme=dark]) .scroll-atmosphere .sa-grid,
  color:var(--bright);
  background:color-mix(in srgb,var(--cyan) 8%,transparent);
 }
-[data-theme=light] .header .mega-menu{
+[data-theme=light] .header .mega-panel{
  background:#ffffff;
  color:var(--ink);
-}
-[data-theme=light] .header .mega-menu.show{
  border-color:color-mix(in srgb,var(--ink) 12%,transparent);
  box-shadow:0 24px 70px #0b274033;
 }
@@ -1010,25 +1027,12 @@ html:not([data-theme=dark]) .hero-grid,
 @media(max-width:1150px){
  .header{max-width:1100px}
  .header .desktop-nav{gap:14px}
- .header .mega-menu{
-  grid-template-columns:minmax(180px,.75fr) minmax(260px,1.4fr);
+ .header .mega-panel{
+  grid-template-columns:200px minmax(0,1fr) !important;
  }
  .header .mega-intro{padding:22px 20px}
  .header .mega-intro h3{font-size:clamp(24px,2.8vw,32px)}
  .header .mega-links a{font-size:13px;min-height:52px;padding:10px 8px}
-}
-@media(max-width:980px){
- .header .mega-menu{
-  grid-template-columns:1fr;
- }
- .header .mega-intro{
-  border-right:0;
-  border-bottom:1px solid #ffffff18;
-  padding:20px 22px 16px;
- }
- .header .mega-intro h3{margin:8px 0 12px}
- .header .mega-links{padding:8px 12px 14px}
- [data-theme=light] .header .mega-intro{border-bottom-color:var(--line)}
 }
 @media(max-width:850px){
  .header{
@@ -1037,8 +1041,8 @@ html:not([data-theme=dark]) .hero-grid,
   height:58px !important;
   padding:0 10px 0 10px !important;
   border-radius:16px;
-  grid-template-columns:1fr auto;
  }
+ .header-bar{grid-template-columns:1fr auto}
  .header.scrolled{height:54px !important}
  .header .mega-menu{display:none !important}
  .mobile-panel{

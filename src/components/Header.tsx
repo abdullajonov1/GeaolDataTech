@@ -103,6 +103,7 @@ export function Header({locale}:{locale:Locale}){
 
  return <>
   <header className={'header '+(scrolled?'scrolled ':'')+(onHome?'on-home ':'')+(open?'menu-open ':'')} onMouseLeave={()=>setMega(null)}>
+   <div className="header-bar">
    <Logo locale={activeLocale}/>
    <nav className="desktop-nav">{t.nav.map((label,i)=>{
     if(i===0)return null
@@ -127,10 +128,13 @@ export function Header({locale}:{locale:Locale}){
     <Link className="header-cta" href={`/${activeLocale}/contact`}>{t.start}<ArrowUpRight/></Link>
     <button className="mobile-toggle" aria-label={open?t.close:t.menu} onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button>
    </div>
-   <div className={'mega-menu '+(mega?'show':'')}>{mega&&<>
-    <div className="mega-intro"><span>GEODATA / SERVICES</span><h3>{t.nav[2]}</h3><Link href={`/${activeLocale}/services`}>{t.view}<ArrowUpRight/></Link></div>
-    <div className="mega-links">{services.slice(0,6).map((item,i)=><Link href={`/${activeLocale}/services#${item.slug}`} key={item.slug}><small>0{i+1}</small><span>{tx(item.title,activeLocale)}</span><ArrowUpRight/></Link>)}</div>
-   </>}</div>
+   </div>
+   <div className={'mega-menu '+(mega?'show':'')} onMouseEnter={()=>setMega('services')}>
+    <div className="mega-panel">
+     <div className="mega-intro"><span>GEODATA / SERVICES</span><h3>{t.nav[2]}</h3><Link href={`/${activeLocale}/services`}>{t.view}<ArrowUpRight/></Link></div>
+     <div className="mega-links">{services.slice(0,6).map((item,i)=><Link href={`/${activeLocale}/services#${item.slug}`} key={item.slug}><small>0{i+1}</small><span>{tx(item.title,activeLocale)}</span><ArrowUpRight/></Link>)}</div>
+    </div>
+   </div>
   </header>
   {mobilePanel}
  </>

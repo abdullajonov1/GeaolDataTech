@@ -61,7 +61,7 @@ export default async function Page({params}:{params:Promise<{locale:string}>}){
     <div className="office-map">
      <RealMap
       key={`office-${company.coords.lat}-${company.coords.lng}`}
-      markers={[{id:'office',lng:company.coords.lng,lat:company.coords.lat,label:'GEOLDATA TECH — Erkin 63'}]}
+      markers={[{id:'office',lng:company.coords.lng,lat:company.coords.lat,label:'GeoAIData Tech — Erkin 63'}]}
       activeId="office"
       center={[company.coords.lng,company.coords.lat]}
       zoom={17}

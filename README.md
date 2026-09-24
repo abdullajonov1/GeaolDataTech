@@ -1,4 +1,4 @@
-# GEOLDATA TECH
+# GeoAIData Tech
 
 Production-ready multilingual corporate website built with Next.js App Router, TypeScript, Framer Motion, React Three Fiber, GSAP, Lenis, React Hook Form, and Zod.
 

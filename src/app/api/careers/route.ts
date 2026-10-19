@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { addApplication, saveCv, setApplicationCv } from '@/lib/admin-store'
 
 export const runtime = 'nodejs'
 
@@ -19,13 +20,6 @@ function escapeHtml(value: string) {
 export async function POST(request: Request) {
   const token = process.env.TELEGRAM_BOT_TOKEN
   const chatId = process.env.TELEGRAM_CHAT_ID
-
-  if (!token || !chatId) {
-    return NextResponse.json(
-      { error: 'Telegram is not configured' },
-      { status: 500 },
-    )
-  }
 
   let form: FormData
   try {
@@ -67,6 +61,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid CV type' }, { status: 400 })
   }
 
+  const saved = await addApplication({
+    name,
+    email,
+    phone,
+    position,
+    experience,
+    linkedin,
+    portfolio,
+    about,
+    locale,
+    cvName: cv.name || 'cv.pdf',
+  })
+  const cvFile = await saveCv(saved.id, cv)
+  await setApplicationCv(saved.id, cvFile, cv.name || 'cv.pdf')
+
   const text = [
     '<b>Yangi ish arizasi</b>',
     `Til: ${escapeHtml(locale)}`,
@@ -85,6 +94,10 @@ export async function POST(request: Request) {
     .filter(Boolean)
     .join('\n')
 
+  if (!token || !chatId) {
+    return NextResponse.json({ ok: true })
+  }
+
   const messageRes = await fetch(
     `https://api.telegram.org/bot${token}/sendMessage`,
     {
@@ -101,10 +114,7 @@ export async function POST(request: Request) {
   const messageJson = await messageRes.json().catch(() => null)
   if (!messageRes.ok || !messageJson?.ok) {
     console.error('Telegram career message failed', messageJson)
-    return NextResponse.json(
-      { error: 'Failed to send application' },
-      { status: 502 },
-    )
+    return NextResponse.json({ ok: true })
   }
 
   const tgForm = new FormData()
@@ -128,10 +138,6 @@ export async function POST(request: Request) {
   const fileJson = await fileRes.json().catch(() => null)
   if (!fileRes.ok || !fileJson?.ok) {
     console.error('Telegram career CV failed', fileJson)
-    return NextResponse.json(
-      { error: 'Application sent, but CV upload failed' },
-      { status: 502 },
-    )
   }
 
   return NextResponse.json({ ok: true })

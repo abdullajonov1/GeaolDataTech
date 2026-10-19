@@ -3,7 +3,7 @@ import { defaultLocale, locales } from './src/lib/i18n'
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  if (pathname.startsWith('/_next') || pathname.includes('.')) return NextResponse.next()
+  if (pathname.startsWith('/_next') || pathname.startsWith('/admin') || pathname.includes('.')) return NextResponse.next()
   const hasLocale = locales.some(locale => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`))
   if (hasLocale) {
     const response = NextResponse.next()

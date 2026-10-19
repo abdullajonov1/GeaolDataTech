@@ -3,12 +3,6 @@ import { useEffect, useRef } from 'react'
 import { Map as MapLibreMap, Marker as MapLibreMarker, NavigationControl, type StyleSpecification } from 'maplibre-gl'
 
 export type RealMapMarker={id:string;lng:number;lat:number;label:string}
-export const projectCoordinates:Record<string,[number,number]>={
- 'space-water-monitoring':[69.2401,41.2995],
- 'space-agro-monitoring':[66.9597,39.6542],
- 'xgt-online':[71.7843,40.3894]
-}
-
 const rasterStyle:StyleSpecification={
  version:8,
  sources:{osm:{type:'raster',tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,attribution:'© OpenStreetMap contributors'}},

@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { addInbox } from '@/lib/admin-store'
+
+export const runtime = 'nodejs'
 
 const schema = z.object({
   name: z.string().min(2),
@@ -21,13 +24,6 @@ export async function POST(request: Request) {
   const token = process.env.TELEGRAM_BOT_TOKEN
   const chatId = process.env.TELEGRAM_CHAT_ID
 
-  if (!token || !chatId) {
-    return NextResponse.json(
-      { error: 'Telegram is not configured' },
-      { status: 500 },
-    )
-  }
-
   let body: unknown
   try {
     body = await request.json()
@@ -42,6 +38,18 @@ export async function POST(request: Request) {
 
   const data = parsed.data
   const company = data.company?.trim()
+  await addInbox({
+    name: data.name,
+    company: company || '',
+    email: data.email,
+    phone: data.phone,
+    message: data.message,
+    locale: data.locale || 'uz',
+  })
+
+  if (!token || !chatId) {
+    return NextResponse.json({ ok: true })
+  }
   const text = [
     '<b>Yangi xabar</b>',
     `Til: ${escapeHtml(data.locale || 'uz')}`,
@@ -74,10 +82,6 @@ export async function POST(request: Request) {
   const telegramJson = await telegramRes.json().catch(() => null)
   if (!telegramRes.ok || !telegramJson?.ok) {
     console.error('Telegram send failed', telegramJson)
-    return NextResponse.json(
-      { error: 'Failed to send message' },
-      { status: 502 },
-    )
   }
 
   return NextResponse.json({ ok: true })

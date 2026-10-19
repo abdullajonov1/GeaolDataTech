@@ -1,4 +1,5 @@
 'use client'
+import { usePathname } from 'next/navigation'
 import { ThemeProvider } from 'next-themes'
 import { useEffect, type ReactNode } from 'react'
 import Lenis from 'lenis'
@@ -34,8 +35,15 @@ function Progress(){
   return <motion.div className="scroll-progress" style={{scaleX}}/>
 }
 
+function AdminAware({children}:{children:ReactNode}){
+  const pathname=usePathname()
+  const admin=pathname.startsWith('/admin')
+  if(admin)return children
+  return <SmoothScroll><Progress/><ScrollAtmosphere/><ScrollCompanion/>{children}</SmoothScroll>
+}
+
 export function Providers({children}:{children:ReactNode}){
   return <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
-    <SmoothScroll><Progress/><ScrollAtmosphere/><ScrollCompanion/>{children}</SmoothScroll>
+    <AdminAware>{children}</AdminAware>
   </ThemeProvider>
 }

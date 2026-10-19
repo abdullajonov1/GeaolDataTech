@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { CheckCircle2, ChevronDown, LoaderCircle, Upload, X } from 'lucide-react'
 import type { Locale } from '@/lib/i18n'
-import { jobs, tx, ui } from '@/data/site'
+import { ui } from '@/data/site'
 
 type CareerData = {
   name: string
@@ -79,7 +79,7 @@ function Label({
   )
 }
 
-export function CareerForm({ locale }: { locale: Locale }) {
+export function CareerForm({ locale, positions }: { locale: Locale; positions: string[] }) {
   const t = ui[locale]
   const c = careerCopy[locale]
   const [sent, setSent] = useState(false)
@@ -108,7 +108,7 @@ export function CareerForm({ locale }: { locale: Locale }) {
     },
   })
   const position = watch('position')
-  const positionOptions = jobs.map((job) => tx(job.title, locale))
+  const positionOptions = positions
 
   useEffect(() => {
     if (!sent) return

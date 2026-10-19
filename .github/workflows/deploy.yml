@@ -21,18 +21,30 @@ jobs:
             --exclude='.env.local' \
             --exclude='.env.production' \
             --exclude='.env.production.local' \
+            --exclude='storage/' \
+            --exclude='public/uploads/' \
             ./ /var/www/geoldatatech/
 
       - name: Write Telegram credentials
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          ADMIN_SESSION_SECRET: ${{ secrets.ADMIN_SESSION_SECRET }}
         run: |
           cd /var/www/geoldatatech
-          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
-            umask 077
-            printf 'TELEGRAM_BOT_TOKEN=%s\nTELEGRAM_CHAT_ID=%s\n' "$TELEGRAM_BOT_TOKEN" "$TELEGRAM_CHAT_ID" > .env.production.local
-          fi
+          umask 077
+          touch .env.production.local
+          tmp=$(mktemp)
+          grep -v -E '^(TELEGRAM_BOT_TOKEN|TELEGRAM_CHAT_ID|ADMIN_PASSWORD|ADMIN_SESSION_SECRET)=' .env.production.local > "$tmp" || true
+          {
+            cat "$tmp"
+            [ -n "$TELEGRAM_BOT_TOKEN" ] && printf 'TELEGRAM_BOT_TOKEN=%s\n' "$TELEGRAM_BOT_TOKEN"
+            [ -n "$TELEGRAM_CHAT_ID" ] && printf 'TELEGRAM_CHAT_ID=%s\n' "$TELEGRAM_CHAT_ID"
+            [ -n "$ADMIN_PASSWORD" ] && printf 'ADMIN_PASSWORD=%s\n' "$ADMIN_PASSWORD"
+            [ -n "$ADMIN_SESSION_SECRET" ] && printf 'ADMIN_SESSION_SECRET=%s\n' "$ADMIN_SESSION_SECRET"
+          } > .env.production.local
+          rm -f "$tmp"
 
       - name: Install, build, and restart
         run: |

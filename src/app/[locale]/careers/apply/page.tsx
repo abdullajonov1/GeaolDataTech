@@ -1,12 +1,16 @@
 import { notFound } from 'next/navigation'
 import { CareerForm } from '@/components/CareerForm'
 import { PageHero } from '@/components/PageShell'
+import { listJobs } from '@/lib/admin-store'
 import { isLocale, type Locale } from '@/lib/i18n'
+import { tx } from '@/data/site'
 
 export const metadata={title:'Career Application'}
+export const dynamic='force-dynamic'
 
 export default async function Page({params}:{params:Promise<{locale:string}>}){
  const {locale}=await params;if(!isLocale(locale))notFound()
+ const positions=(await listJobs(true)).map(job=>tx(job.title, locale as Locale))
  const aside=locale==='uz'
   ?'Har bir kuchli tizim tafsilot, kontekst va ta’sirga e’tibor beradigan odamlardan boshlanadi.'
   :locale==='ru'
@@ -26,7 +30,7 @@ export default async function Page({params}:{params:Promise<{locale:string}>}){
     <h2>GIS × CODE × DESIGN</h2>
     <p>{aside}</p>
    </div>
-   <CareerForm locale={locale as Locale}/>
+   <CareerForm locale={locale as Locale} positions={positions}/>
   </section>
  </>
 }

@@ -1,0 +1,273 @@
+.admin-app{
+  min-height:100vh;
+  background:#e7edf2;
+  color:#172033;
+  font-family:"Space Grotesk", sans-serif;
+}
+.admin-app *{box-sizing:border-box}
+.admin-login{width:min(420px,calc(100% - 32px));margin:0 auto;padding:80px 0}
+.admin-desk{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.admin-side{display:flex;flex-direction:column;gap:8px;padding:28px 16px;background:#0d1b28;color:#d7e4ee}
+.admin-brand{padding:0 10px 18px}
+.admin-brand small{display:block;color:#7cb7d4;font:11px "DM Mono",monospace;letter-spacing:.12em}
+.admin-brand strong{display:block;margin-top:6px;color:#fff;font-size:22px;font-weight:600}
+.admin-side nav{display:grid;gap:4px}
+.admin-app .admin-side button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:42px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:#c5d4de;font-weight:600;text-align:left}
+.admin-app .admin-side button.on{background:#17445f;color:#fff}
+.admin-side-foot{display:grid;gap:8px;margin-top:auto}
+.admin-app .admin-side button.ghost,.admin-app .admin-side a.ghost{background:transparent;color:#9eb0be;border:1px solid #2a4254}
+.admin-app .admin-side a.ghost{display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;padding:0 12px;border-radius:10px;font-weight:600;text-decoration:none;box-sizing:border-box}
+.admin-side i{min-width:22px;height:22px;display:grid;place-items:center;border-radius:999px;background:#0c6e9e;color:#fff;font:700 11px/1 "DM Mono",monospace;font-style:normal}
+.admin-shell{min-width:0;padding:36px 40px 80px}
+.admin-login h1,.admin-head h1{margin:8px 0 0;font-size:32px;font-weight:500}
+.admin-kicker{color:#0c6e9e;font:12px "DM Mono", monospace;letter-spacing:.08em}
+.admin-login p,.admin-note{color:#5c6b78;line-height:1.5}
+.admin-login form,.admin-editor{display:grid;gap:14px;margin-top:24px}
+.admin-login .admin-link{display:flex;width:100%;margin-top:14px}
+.admin-app label{display:grid;gap:6px;font-size:13px;color:#4d5d6b}
+.admin-app input,.admin-app textarea,.admin-app select{
+  width:100%;
+  border:1px solid #d5dee6;
+  border-radius:10px;
+  background:#fff;
+  color:#172033;
+  padding:12px 14px;
+  font:15px/1.4 "Space Grotesk", sans-serif;
+}
+.admin-app textarea{min-height:96px;resize:vertical}
+.admin-app button,.admin-app .admin-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid transparent;
+  border-radius:10px;
+  min-height:40px;
+  padding:0 16px;
+  background:#0c6e9e;
+  color:#fff;
+  font-weight:650;
+  cursor:pointer;
+  text-decoration:none;
+}
+.admin-app button.ghost,.admin-app .admin-link{background:#fff;color:#243447;border-color:#d5dee6}
+.admin-app button.warn{background:#c2414a;color:#fff}
+.admin-error{color:#c2414a;font-size:14px}
+.admin-head,.admin-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.admin-list{display:grid;gap:10px;margin:24px 0}
+.admin-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:16px 18px;border:1px solid #d9e1e8;border-radius:14px;background:#fff}
+.admin-row-info{min-width:0}
+.admin-row b{display:block;margin:0 0 6px;font-size:16px}
+.admin-row small{display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:#5c6b78}
+.admin-row small em{padding:2px 8px;border-radius:999px;background:#eef2f5;color:#4d5d6b;font-style:normal;font-size:11px;font-weight:700}
+.admin-row small em.is-on{background:#e5f4ec;color:#1f7a4d}
+.admin-row-tools{display:grid;grid-auto-flow:column;grid-auto-columns:108px;gap:8px;justify-content:end}
+.admin-app .admin-row-tools button,.admin-app .admin-row-tools .admin-link{display:grid;place-items:center;width:100%;min-height:36px;padding:0 8px;font-size:13px;white-space:nowrap}
+.admin-check{display:flex;align-items:center;gap:10px}
+.admin-check input{width:18px;height:18px}
+.admin-tabs button.active{background:#e8f1f6;color:#07111c}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.admin-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.admin-preview figure{margin:0;position:relative}
+.admin-preview img{width:100%;height:96px;object-fit:cover;border-radius:10px;background:#102033}
+.admin-preview button{position:absolute;top:6px;right:6px;min-height:28px;padding:0 8px}
+.admin-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:24px 0}
+.admin-stats button{display:grid;gap:6px;min-height:92px;padding:16px;text-align:left;background:#fff;color:#172033;border:1px solid #d9e1e8}
+.admin-stats b{font-size:28px;font-weight:600}
+.admin-stats span{color:#5c6b78;font-size:13px}
+.admin-toolbar{margin:18px 0 0}
+.admin-body{white-space:pre-wrap;margin:10px 0 0;color:#314050;line-height:1.55}
+.admin-row.is-new{border-color:#0c6e9e;box-shadow:inset 3px 0 0 #0c6e9e}
+.admin-job{margin:20px 0;padding:16px;border:1px solid #d9e1e8;border-radius:14px;background:#fff}
+.admin-preview figcaption{margin-top:6px;color:#5c6b78;font-size:11px}
+@media(max-width:900px){.admin-desk{grid-template-columns:1fr}.admin-side{position:sticky;top:0;z-index:4;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 16px}.admin-brand{padding:0 8px 0 0}.admin-side nav{display:flex;flex:1;flex-wrap:wrap}.admin-app .admin-side button,.admin-app .admin-side a.ghost{width:auto}.admin-side-foot{margin-top:0;display:flex}.admin-shell{padding:24px 16px 64px}.admin-row{grid-template-columns:1fr}.admin-row-tools{justify-content:start;overflow-x:auto}.admin-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.admin-grid{grid-template-columns:1fr}}
+.story-editor{display:grid;grid-template-columns:300px minmax(0,1fr) 156px;grid-template-rows:36px auto minmax(0,1fr) 26px;grid-template-areas:"title title title" "ribbon ribbon ribbon" "format canvas slides" "status status status";height:100vh;overflow:hidden;background:#f3f2f1;color:#201f1e;font-family:"Segoe UI",sans-serif}
+.ppt-title{grid-area:title;display:flex;align-items:center;gap:8px;padding:0 10px;background:#0079c1;color:#fff}
+.ppt-title a{color:#fff;text-decoration:none;font-size:16px;line-height:1}
+.ppt-mark{display:grid;place-items:center;width:18px;height:18px;background:#fff;color:#0079c1;font:700 12px/1 "Segoe UI",sans-serif;font-style:normal}
+.ppt-title strong{min-width:0;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ppt-title .admin-note,.ppt-title .admin-error{margin:0;color:#fff;font-size:12px;white-space:nowrap}
+.ppt-title .story-lang{margin-left:auto}
+.story-editor .ppt-title button,.ppt-title a.ppt-site{min-height:26px;padding:0 10px;border:1px solid rgba(255,255,255,.55);border-radius:2px;background:transparent;color:#fff;font:600 12px/1 "Segoe UI",sans-serif;display:inline-flex;align-items:center;text-decoration:none}
+.story-editor .ppt-title button.ppt-publish{background:#fff;color:#0079c1;border-color:#fff}
+.story-editor .ppt-title button:disabled{opacity:.5}
+.ppt-tabs{grid-area:tabs;display:flex;align-items:flex-end;gap:2px;padding:0 8px;background:#fff;border-bottom:1px solid #edebe9}
+.story-editor .ppt-tabs button{min-height:32px;padding:0 12px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;color:#323130;font:600 13px/1 "Segoe UI",sans-serif}
+.story-editor .ppt-tabs button.on{color:#0079c1;border-bottom-color:#0079c1}
+.ppt-ribbon{grid-area:ribbon;display:flex;flex-wrap:wrap;align-items:stretch;gap:0;min-height:0;padding:6px 8px 8px;overflow:visible;background:#fff;border-bottom:1px solid #edebe9}
+.ppt-group{display:flex;flex-direction:column;justify-content:space-between;gap:4px;padding:0 10px;border-right:1px solid #edebe9}
+.ppt-group>div{display:flex;align-items:center;gap:4px}
+.ppt-group>span{color:#605e5c;font-size:11px;text-align:center}
+.story-editor .ppt-ribbon button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;width:auto;min-width:68px;max-width:84px;height:auto;min-height:62px;padding:6px 6px 4px;border:1px solid transparent;border-radius:8px;background:transparent;color:#323130;box-shadow:none}
+.story-editor .ppt-ribbon button svg{width:22px;height:22px;flex:0 0 auto}
+.story-editor .ppt-ribbon button span{max-width:76px;color:inherit;font:11px/1.15 "Segoe UI",sans-serif;font-weight:600;text-align:center;white-space:normal}
+.story-editor .ppt-ribbon button:hover,.story-editor .ppt-ribbon button.on{background:#f3f9fc;border-color:#0079c1;color:#0079c1}
+.bg-preview{width:100%;height:88px;object-fit:cover;border-radius:8px;border:1px solid #edebe9}
+.place-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.story-editor .place-action{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;min-height:68px;margin:0;padding:8px 4px;overflow:hidden;border:1px solid #c8c6c4;border-radius:8px;background:#fff;color:#323130;font:600 11px/1.15 "Segoe UI",sans-serif;text-align:center;cursor:pointer;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.story-editor .place-action svg{width:20px;height:20px;flex:0 0 auto}
+.story-editor .place-action span{white-space:nowrap}
+.story-editor .place-action:hover{border-color:#0079c1;background:#f3f9fc;color:#0079c1}
+.story-editor .place-action input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:pointer}
+.align-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.story-editor .align-actions button{display:flex;align-items:center;justify-content:center;min-height:36px;padding:0;border:1px solid #c8c6c4;border-radius:8px;background:#fff;color:#323130;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.story-editor .align-actions button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+.story-editor .align-actions button:hover{border-color:#0079c1;background:#f3f9fc;color:#0079c1}
+.story-editor .align-actions button.on,.story-editor .align-actions button.on:hover{background:#0079c1;border-color:#0079c1;color:#fff}
+.font-line{display:grid;grid-template-columns:minmax(0,1fr) 76px;gap:8px;align-items:end}
+.font-line input[type=number]{height:36px;padding:0 8px;text-align:center}
+.story-editor .ppt-ribbon button:disabled{opacity:.4}
+.ppt-group-wide>div{gap:10px}
+.ppt-ribbon label{display:grid;gap:4px;color:#605e5c;font-size:11px}
+.ppt-ribbon select,.ppt-ribbon input[type=color]{min-height:28px;border:1px solid #8a8886;border-radius:2px;background:#fff;color:#201f1e;font:12px "Segoe UI",sans-serif}
+.story-lang{display:flex;gap:2px}
+.story-editor .story-lang button{min-height:22px;padding:0 6px;border:0;border-radius:2px;background:transparent;color:#fff;font:600 11px/1 "Segoe UI",sans-serif}
+.story-editor .story-lang button.on{background:rgba(255,255,255,.22)}
+.ppt-slides{grid-area:slides;display:flex;flex-direction:column;gap:12px;min-height:0;padding:12px 10px 16px;overflow:auto;overscroll-behavior:contain;background:#f3f2f1;border-left:1px solid #edebe9}
+.story-editor .ppt-slide{display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px;align-items:start;width:100%;min-height:0;padding:0;border:0;border-radius:0;background:transparent;color:#323130;font:12px "Segoe UI",sans-serif;text-align:left}
+.story-editor .ppt-slide em{font-style:normal;color:#605e5c;text-align:right}
+.ppt-thumb{display:flex;align-items:flex-end;aspect-ratio:16/10;padding:6px;overflow:hidden;background:#fff;border:1px solid #c8c6c4;box-shadow:0 1px 2px rgba(0,0,0,.12);color:#fff;font-size:11px;font-weight:600}
+.story-editor .ppt-slide:not(.on) .ppt-thumb{color:#605e5c}
+.story-editor .ppt-slide.on .ppt-thumb{border:2px solid #0079c1;color:#201f1e}
+.story-editor .ppt-thumb.is-cover{color:#fff}
+.story-format{grid-area:format;min-height:0;overflow:auto;overscroll-behavior:contain;padding:0 0 24px;background:#fff;border-right:1px solid #edebe9}
+.story-place{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;overflow:visible;border:0;border-radius:0;background:transparent}
+.story-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.story-format label.admin-check{display:flex;align-items:center}
+.story-editor .story-place button{min-height:34px;border:1px solid #e1dfdd;border-radius:8px;background:#fff;color:#201f1e;font:600 12px/1 "Segoe UI",sans-serif}
+.story-editor .story-place button+button{border-left:1px solid #e1dfdd}
+.story-editor .story-place button:hover{background:#f3f9fc;color:#0079c1;border-color:#0079c1}
+.story-editor .story-place button.on,.story-editor .story-place button.on:hover{background:#0079c1;border-color:#0079c1;color:#fff}
+.story-inspector{display:grid;align-content:start;gap:0;padding:0;border:0}
+.story-inspector h2{position:sticky;top:0;z-index:2;margin:0;padding:14px 14px 10px;background:#fff;color:#201f1e;font:600 15px/1.2 "Segoe UI",sans-serif}
+.look-card{display:grid;gap:8px;margin:0 12px;padding:12px 0;border-top:1px solid #edebe9}
+.look-card h3{margin:0;color:#605e5c;font:600 11px/1 "Segoe UI",sans-serif;letter-spacing:.05em;text-transform:uppercase}
+.look-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.story-format label b{display:block;color:#605e5c;font:600 11px/1 "DM Mono",ui-monospace,monospace;letter-spacing:.04em}
+.field-pick{position:relative}
+.story-editor .field-pick>button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:36px;padding:0 12px;border:1px solid #c8c6c4;border-radius:8px;background:#fff;color:#201f1e;font:13px/1 "Segoe UI",sans-serif;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.story-editor .field-pick>button i{width:8px;height:8px;border-right:1.5px solid #605e5c;border-bottom:1.5px solid #605e5c;transform:rotate(45deg) translateY(-2px)}
+.story-editor .field-pick.is-open>button,.story-editor .field-pick>button:hover{border-color:#0079c1}
+.story-editor .field-pick>button:disabled{opacity:.45}
+.field-pick ul{position:fixed;z-index:40;margin:0;padding:4px;list-style:none;border:1px solid #e1dfdd;border-radius:8px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.story-editor .field-pick li button{width:100%;min-height:32px;padding:0 10px;border:0;border-radius:6px;background:transparent;color:#201f1e;font:13px/1 "Segoe UI",sans-serif;text-align:left}
+.story-editor .field-pick li button:hover,.story-editor .field-pick li button.on{background:#f3f9fc;color:#0079c1}
+.look-head{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 8px}
+.story-format .admin-note{margin:0;color:#605e5c;font-size:12px;line-height:1.4}
+.story-format label{display:grid;gap:4px;padding:0;background:transparent;color:#605e5c;font-size:12px;font-weight:600}
+.story-format input,.story-format select,.story-format textarea{border:1px solid #c8c6c4;border-radius:8px;background:#fff;color:#201f1e;padding:8px 12px;font:13px/1.4 "Segoe UI",sans-serif;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.story-format select{appearance:none;height:36px;padding-right:32px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23605e5c' d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E") no-repeat right 12px center}
+.story-format select:hover,.story-format input:hover,.story-format textarea:hover{border-color:#0079c1}
+.story-format select:focus,.story-format input:focus,.story-format textarea:focus{outline:none;border-color:#0079c1;box-shadow:0 0 0 3px rgba(0,121,193,.16)}
+.story-more{display:grid;gap:8px;padding-top:8px;border-top:1px solid #edebe9}
+.story-more summary{cursor:pointer;color:#0079c1;font-size:13px;font-weight:600}
+.story-editor .story-format .ghost,.story-editor .story-inspector .ghost{width:100%;min-height:34px;border-radius:8px;background:#fff;color:#323130;border:1px solid #c8c6c4;font:600 12px "Segoe UI",sans-serif;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.story-editor .story-format .ghost:hover{border-color:#0079c1;color:#0079c1;background:#f3f9fc}
+.story-editor .story-format .ghost.on,.story-editor .story-format .ghost.on:hover{background:#0079c1;border-color:#0079c1;color:#fff}
+.look-head .ghost:last-child:hover{border-color:#a4262c;color:#a4262c;background:#fdf3f4}
+.ppt-status{grid-area:status;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#f3f2f1;border-top:1px solid #edebe9;color:#605e5c;font-size:12px}
+.inspector-card{display:grid;gap:8px;padding:10px;border-radius:12px;background:#fff}
+.story-canvas{grid-area:canvas;min-height:0;overflow:auto;overscroll-behavior:contain;padding:28px 32px 48px;background:#e1dfdd}
+.story-canvas .story-sheet{width:min(960px,100%);margin:0 auto;background:#fff;color:#201f1e;border-radius:0;box-shadow:0 1.6px 3.6px rgba(0,0,0,.18),0 0 1px rgba(0,0,0,.12);font-family:Calibri,"Segoe UI",sans-serif;min-height:calc(100% - 4px)}
+.story-canvas .story-cover{min-height:240px;padding:48px 56px 28px}
+.story-canvas .story-cover h1{margin:8px 0;font:600 40px/1.1 Calibri,"Segoe UI",sans-serif}
+.story-canvas .story-cover p{max-width:40rem;font-size:18px;line-height:1.4}
+.story-canvas .story-cover span,.story-canvas .story-cover small{font-size:14px}
+.story-canvas .story-flow{width:auto;margin:0;padding:8px 32px 32px;gap:14px 12px}
+.story-canvas .story-block{width:fit-content;max-width:100%;margin:0;position:relative;box-sizing:border-box;cursor:grab}
+.story-canvas .story-ink{cursor:text}
+.story-canvas .story-block.is-placed{width:100%;max-width:none}
+.story-canvas .story-text h2,.story-canvas .story-sidecar h2,.story-canvas .story-chart h2{margin:0 0 6px;font:600 28px/1.2 Calibri,"Segoe UI",sans-serif}
+.story-canvas .story-block.is-typed :is(h2,h3,p,.story-ink,.story-quote,.story-rich,.story-button a,.story-button>span,.story-stats strong,.story-list,.story-table,.story-note,.story-shape){font-family:inherit}
+.story-canvas .story-block.is-typed[style*="--story-fs"] :is(h2,h3,p,.story-ink,.story-quote,.story-rich,.story-button a,.story-button>span,.story-stats strong,.story-list,.story-table,.story-note,.story-shape){font-size:var(--story-fs)}
+.story-canvas .story-text p,.story-canvas .story-sidecar p,.story-canvas .story-ink.is-multiline{font-size:18px;line-height:1.45;color:#323130}
+.story-canvas .story-stats strong{font-size:26px}
+.story-canvas .story-play-words span{display:inline-block;margin-right:.28em;opacity:0;transform:translateY(8px)}
+.story-canvas .story-play-words.is-on span{animation:storyWord .45s ease forwards}
+.story-canvas .story-play-wait{opacity:0}
+.story-canvas .story-play-blur{animation:storyBlur .8s ease both}
+@keyframes storyWord{to{opacity:1;transform:none}}
+@keyframes storyBlur{from{opacity:0;filter:blur(8px)}to{opacity:1;filter:blur(0)}}
+.story-canvas .story-stats article{padding:14px}
+.story-canvas .story-text,.story-canvas .story-figure,.story-canvas .story-gallery,.story-canvas .story-map,.story-canvas .story-embed,.story-canvas .story-chart,.story-canvas .story-slider,.story-canvas .story-sidecar{margin:0}
+.story-canvas .story-stats{width:max-content;max-width:100%}
+.story-canvas .story-block.is-placed .story-block-body,.story-canvas .story-block.is-sized .story-block-body{display:flex;width:100%}
+.story-canvas .story-block.is-sized .story-block-body{height:100%}
+.story-canvas .story-block.is-box .story-block-body{display:flex;flex-direction:column;width:100%}
+.story-canvas .story-block.is-box .story-block-body>*{width:100%;max-width:none;min-width:0}
+.story-canvas .story-block.is-sized .story-block-body{height:100%}
+.story-canvas .story-block.is-sized .story-block-body>*{flex:1 1 auto;height:100%;min-height:0}
+.story-canvas .story-block.is-sized :is(.story-map,.story-map .real-map,.story-embed iframe,.story-video,.story-figure,.story-slider,.story-gallery,.story-chart,.story-chart svg,.story-button,.story-button a,.story-button>span,.story-text,.story-quote,.story-grid,.story-sidecar,.story-shape,.story-list,.story-table,.story-note){height:100%;min-height:0;max-width:none}
+.story-canvas .story-block.is-sized .story-video{aspect-ratio:auto}
+.story-canvas .story-block.is-sized img{width:100%;height:100%;object-fit:cover}
+.story-canvas .story-block.is-box .story-button{display:flex}
+.story-canvas .story-block.is-box .story-button a,.story-canvas .story-block.is-box .story-button>span{display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box}
+.story-canvas .story-block.is-placed .story-stats,.story-canvas .story-block.is-sized .story-stats,.story-canvas .story-block.is-box .story-stats{width:100%;height:100%;max-width:none}
+.story-canvas .story-block.is-placed .story-stats article,.story-canvas .story-block.is-sized .story-stats article,.story-canvas .story-block.is-box .story-stats article{flex:1 1 0;width:auto;min-width:0;height:100%}
+.story-canvas .story-sidecar{grid-template-columns:1fr}
+.story-canvas .story-sidecar article{min-height:0;padding:8px 0}
+.story-canvas .story-sidecar-stage{position:static}
+.story-canvas .story-map,.story-canvas .story-map .real-map{min-height:220px}
+.story-canvas .story-embed iframe{height:280px}
+.story-canvas .story-cover,.story-canvas .story-block{outline:1px solid transparent;outline-offset:0}
+.story-canvas .is-selected{outline-color:#0079c1}
+.story-drag-strip{position:absolute;left:50%;top:-18px;display:grid;place-items:center;width:18px;height:14px;margin-left:-9px;padding:0;border:1px solid #8a8886;background:#fff;color:#323130;font-size:11px;letter-spacing:-2px;cursor:grab;user-select:none;touch-action:none;opacity:0}
+.story-canvas .story-block:hover .story-drag-strip,.story-canvas .story-block.is-selected .story-drag-strip{opacity:1}
+.story-ghost{position:fixed;z-index:90;pointer-events:none;transform:translate(12px,14px);padding:6px 10px;border-radius:2px;background:#fff;color:#201f1e;border:1px solid #0079c1;font:600 12px "Segoe UI",sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.story-canvas .story-block.is-selected{z-index:3;overflow:visible}
+.story-block-body{min-height:0}
+.story-quote{margin:0;padding-left:16px;border-left:4px solid currentColor;font-size:1.25em}
+.story-separator{border:0;border-top:2px solid currentColor;margin:8px 0}
+.story-button a,.story-button>span{display:inline-flex;padding:10px 18px;background:#0079c1;color:#fff;text-decoration:none}
+.story-video{width:100%;aspect-ratio:16/9;border:0}
+.story-spacer{min-height:48px}
+.story-rich a{color:#0079c1}
+.story-format input[type=range]{padding:0;height:22px;border:0;border-radius:0;background:transparent;box-shadow:none}
+.story-format input[type=color]{height:36px;padding:3px}
+.story-format input[type=checkbox]{width:16px;height:16px;padding:0;border-radius:4px;box-shadow:none}
+.story-handle{position:absolute;z-index:6;width:9px;height:9px;background:#fff;border:1px solid #323130;border-radius:0;box-shadow:none;touch-action:none}
+.story-handle.n{top:-7px;left:50%;margin-left:-6px;cursor:ns-resize}
+.story-handle.s{bottom:-7px;left:50%;margin-left:-6px;cursor:ns-resize}
+.story-handle.e{right:-7px;top:50%;margin-top:-6px;cursor:ew-resize}
+.story-handle.w{left:-7px;top:50%;margin-top:-6px;cursor:ew-resize}
+.story-handle.nw{top:-7px;left:-7px;cursor:nwse-resize}
+.story-handle.se{right:-7px;bottom:-7px;cursor:nwse-resize}
+.story-handle.ne{top:-7px;right:-7px;cursor:nesw-resize}
+.story-handle.sw{left:-7px;bottom:-7px;cursor:nesw-resize}
+.story-guide{position:absolute;z-index:30;background:#e23b4a;pointer-events:none}
+.story-guide span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:1px 5px;border-radius:8px;background:#e23b4a;color:#fff;font:600 11px/1.4 "Segoe UI",sans-serif}
+.story-flow-end{width:0;align-self:stretch}
+.story-flow-end.is-drop{width:3px;background:#0079c1}
+.story-canvas .story-grid{gap:10px}
+.story-canvas .story-grid article{min-height:120px;padding:10px;border:1px solid #edebe9;border-radius:8px;background:#faf9f8}
+.story-canvas .story-grid img{height:96px}
+.story-canvas .story-grid h3{margin:8px 0 4px;font:600 16px/1.3 Calibri,"Segoe UI",sans-serif}
+.story-shape{display:flex;align-items:center;justify-content:center;min-height:80px;width:100%;box-sizing:border-box;text-align:center}
+.story-shape p{margin:0}
+.story-list{margin:0;padding-left:1.2em;width:fit-content;max-width:100%;font-size:16px;line-height:1.5}
+.story-table{width:100%;border-collapse:collapse;background:#fff}
+.story-table td{border:1px solid #edebe9;padding:8px 10px;min-width:64px;vertical-align:top}
+.story-note h3{margin:0 0 6px;font:600 18px/1.3 Calibri,"Segoe UI",sans-serif}
+.story-note p{margin:0;color:#323130}
+.story-canvas .story-block.is-target,.story-canvas .story-cover.is-target{outline:2px dashed #0079c1;outline-offset:3px}
+.story-canvas .story-slider{width:100%}
+.story-canvas .story-slider-arrow{width:36px;height:36px;min-height:36px;padding:0;border:0;background:#ffffffd9;color:#172033}
+.story-canvas .story-slider-dots button{width:8px;height:8px;min-height:8px;padding:0;background:#ffffff8a;color:transparent}
+.story-canvas .story-slider-dots button.is-on{background:#fff}
+.story-canvas .story-slider-tools .story-replace{position:static;margin:0}
+.story-ink{display:inline;min-width:1.5em;outline:none;border-radius:6px}
+h1.story-ink,h2.story-ink,p.story-ink,div.story-ink,figcaption.story-ink{display:block}
+.story-ink.is-multiline{white-space:pre-wrap;min-height:3.2em}
+.story-ink:focus{box-shadow:0 0 0 1px #0079c1}
+.story-ink.is-empty::before{content:attr(data-placeholder);opacity:.55}
+.story-cover .story-ink.is-empty::before{color:#fff}
+.story-cover span .story-ink,.story-cover small .story-ink{display:inline}
+.story-figure,.story-slider,.story-sidecar-stage{position:relative}
+.admin-app .story-replace{position:absolute;z-index:2;top:12px;right:12px;display:inline-flex;width:auto;gap:0;padding:4px 8px;border-radius:2px;background:#fff;color:#201f1e;border:1px solid #c8c6c4;font:12px/1 "Segoe UI",sans-serif;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.admin-app .story-gallery>.story-replace,.admin-app .story-slider>.story-replace,.story-editor .look-card .story-replace{position:static;margin-top:0}
+.story-line-labels{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+@media(max-width:860px){
+ .story-editor{grid-template-columns:1fr;grid-template-rows:auto auto auto minmax(70vh,auto) auto auto;grid-template-areas:"title" "ribbon" "format" "canvas" "slides" "status";height:auto;overflow:visible}
+ .ppt-slides{flex-direction:row;overflow:auto;border-right:0;border-bottom:1px solid #edebe9}
+ .story-editor .ppt-slide{width:120px}
+}

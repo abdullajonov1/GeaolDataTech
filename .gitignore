@@ -9,6 +9,10 @@
 /build
 /dist
 
+# runtime content managed from the admin panel
+/storage
+/public/uploads
+
 # local env
 .env*
 !.env.example

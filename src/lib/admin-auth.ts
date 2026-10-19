@@ -4,11 +4,11 @@ import { cookies } from 'next/headers'
 const COOKIE = 'gdt_admin'
 
 function secret() {
-  return process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_PASSWORD || ''
+  return (process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_PASSWORD || '').replace(/\r/g, '').trim()
 }
 
 export function adminConfigured() {
-  return Boolean(process.env.ADMIN_PASSWORD && secret())
+  return Boolean((process.env.ADMIN_PASSWORD || '').replace(/\r/g, '').trim() && secret())
 }
 
 function sign(value: string) {

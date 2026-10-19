@@ -11,11 +11,11 @@ export async function POST(request: Request) {
   let password = ''
   try {
     const body = await request.json() as { password?: string }
-    password = body.password || ''
+    password = (body.password || '').replace(/\r/g, '').trim()
   } catch {
     return NextResponse.json({ error: 'Noto‘g‘ri so‘rov' }, { status: 400 })
   }
-  const expected = process.env.ADMIN_PASSWORD || ''
+  const expected = (process.env.ADMIN_PASSWORD || '').replace(/\r/g, '').trim()
   const left = Buffer.from(password)
   const right = Buffer.from(expected)
   const matches = left.length === right.length && timingSafeEqual(left, right)

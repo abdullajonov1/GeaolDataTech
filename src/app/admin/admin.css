@@ -15,7 +15,7 @@
 .admin-app .admin-side button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:42px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:#c5d4de;font-weight:600;text-align:left}
 .admin-app .admin-side button.on{background:#17445f;color:#fff}
 .admin-side-foot{display:grid;gap:8px;margin-top:auto}
-.admin-app .admin-side button.ghost,.admin-app .admin-side a.ghost{background:transparent;color:#9eb0be;border:1px solid #2a4254}
+.admin-app .admin-side button.ghost,.admin-app .admin-side a.ghost{justify-content:center;text-align:center;background:transparent;color:#9eb0be;border:1px solid #2a4254}
 .admin-app .admin-side a.ghost{display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;padding:0 12px;border-radius:10px;font-weight:600;text-decoration:none;box-sizing:border-box}
 .admin-side i{min-width:22px;height:22px;display:grid;place-items:center;border-radius:999px;background:#0c6e9e;color:#fff;font:700 11px/1 "DM Mono",monospace;font-style:normal}
 .admin-shell{min-width:0;padding:36px 40px 80px}
@@ -71,9 +71,9 @@
 .admin-preview img{width:100%;height:96px;object-fit:cover;border-radius:10px;background:#102033}
 .admin-preview button{position:absolute;top:6px;right:6px;min-height:28px;padding:0 8px}
 .admin-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:24px 0}
-.admin-stats button{display:grid;gap:6px;min-height:92px;padding:16px;text-align:left;background:#fff;color:#172033;border:1px solid #d9e1e8}
+.admin-stats button{display:grid;place-items:center;gap:6px;min-height:92px;padding:16px;text-align:center;background:#fff;color:#172033;border:1px solid #d9e1e8}
 .admin-stats b{font-size:28px;font-weight:600}
-.admin-stats span{color:#5c6b78;font-size:13px}
+.admin-stats span{color:#5c6b78;font-size:13px;text-align:center}
 .admin-toolbar{margin:18px 0 0}
 .admin-body{white-space:pre-wrap;margin:10px 0 0;color:#314050;line-height:1.55}
 .admin-row.is-new{border-color:#0c6e9e;box-shadow:inset 3px 0 0 #0c6e9e}

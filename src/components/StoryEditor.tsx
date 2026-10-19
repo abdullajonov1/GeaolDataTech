@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { blockGroups, blockLabels, createBlock, emptyCell, emptyPanel, emptyPoint, emptyText, fontFaces, setPaletteDrag, storyId, type StoryBlock, type StoryForm, type StoryMotion, type StoryPlay, type StoryProject, type StoryText } from '@/lib/story'
 import type { Locale } from '@/lib/i18n'
 import { StoryView, type StoryEdit } from './StoryView'
+import { AdminPasswordField } from './AdminPasswordField'
 
 function localized(value: StoryText, lang: Locale, next: string): StoryText {
   return { ...value, [lang]: next }
@@ -293,7 +294,7 @@ export function StoryEditor({ slug }: { slug: string }) {
   if (!authed) return <main className="admin-login">
     <h1>Loyiha muharriri</h1>
     <form onSubmit={login}>
-      <label>Parol<input type="password" value={password} onChange={event => setPassword(event.target.value)}/></label>
+      <AdminPasswordField value={password} onChange={setPassword}/>
       {error && <div className="admin-error">{error}</div>}
       <button type="submit">Kirish</button>
     </form>

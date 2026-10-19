@@ -24,6 +24,11 @@
 .admin-login p,.admin-note{color:#5c6b78;line-height:1.5}
 .admin-login form,.admin-editor{display:grid;gap:14px;margin-top:24px}
 .admin-login .admin-link{display:flex;width:100%;margin-top:14px}
+.admin-pass-box{position:relative;display:block}
+.admin-pass-box input{padding-right:46px}
+.admin-app .admin-pass-toggle{position:absolute;right:6px;top:50%;width:36px;min-height:36px;padding:0;border:0;border-radius:8px;background:transparent;color:#5c6b78;transform:translateY(-50%)}
+.admin-app .admin-pass-toggle:hover{color:#172033;background:#eef2f5}
+.admin-pass-toggle svg{display:block;width:20px;height:20px}
 .admin-app label{display:grid;gap:6px;font-size:13px;color:#4d5d6b}
 .admin-app input,.admin-app textarea,.admin-app select{
   width:100%;

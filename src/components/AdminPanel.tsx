@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { InboxMessage, JobApplication, MediaFile, StoredJob } from '@/lib/admin-store'
 import { blankStory, type StoryProject } from '@/lib/story'
+import { AdminPasswordField } from './AdminPasswordField'
 
 type Tab = 'home' | 'stories' | 'inbox' | 'apps' | 'jobs' | 'media'
 type Stats = {
@@ -148,7 +149,7 @@ export function AdminPanel() {
       <h1>Boshqaruv paneli</h1>
       <p>Loyihalar, xabarlar, ish arizalari, vakansiyalar va fayllar shu yerda yig‘iladi.</p>
       <form onSubmit={login}>
-        <label>Parol<input type="password" value={password} onChange={event => setPassword(event.target.value)} autoFocus/></label>
+        <AdminPasswordField value={password} onChange={setPassword} autoFocus/>
         {error && <div className="admin-error">{error}</div>}
         <button type="submit">Kirish</button>
       </form>
